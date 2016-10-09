@@ -1,0 +1,3 @@
+rootProject.name = 'SwatDailyGazette'
+
+include ':app'
