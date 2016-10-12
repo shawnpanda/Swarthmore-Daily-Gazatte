@@ -6,6 +6,6 @@
 
 import React, { Component } from 'react';
 import { AppRegistry } from 'react-native';
-import SwatDailyGazette from './app/App'
+import Root from './app/root'
 
-AppRegistry.registerComponent('SwatDailyGazette', () => SwatDailyGazette);
+AppRegistry.registerComponent('SwatDailyGazette', () => Root);

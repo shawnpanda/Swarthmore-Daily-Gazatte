@@ -6,11 +6,11 @@ import {
   Navigator,
   TouchableHighlight
 } from 'react-native';
-import Home from './components/Home'
-import SideMenu from './components/SideMenu'
 import Drawer from 'react-native-drawer'
+import Home from './Home'
+import SideMenu from './SideMenu'
 
-class SwatDailyGazette extends Component {
+class App extends Component {
   renderScene(route, nav) {
     return (<Home />);
   }
@@ -61,4 +61,4 @@ const drawerStyles = {
   main: {paddingLeft: 3},
 }
 
-export default SwatDailyGazette
+export default App

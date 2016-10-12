@@ -4,19 +4,31 @@ import {
   Text,
   View
 } from 'react-native';
+import Archive from './Archive'
 import ScrollableTabView, { DefaultTabBar, ScrollableTabBar } from 'react-native-scrollable-tab-view';
 
 
 class Home extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      tabs: [1,2,3,4,5,6]
+    }
+  }
   render() {
     return (
     <ScrollableTabView
       style={{marginTop: 40, }}
-      renderTabBar={() => <DefaultTabBar />}
+      renderTabBar={() => <ScrollableTabBar />}
     >
-      <Text tabLabel='Tab #1'>My</Text>
-      <Text tabLabel='Tab #2'>favorite</Text>
-      <Text tabLabel='Tab #3'>project</Text>
+      {this.state.tabs.map((tab, i)=> {
+        return <Archive
+          key={i}
+          index={i}
+          tabLabel ={`tab${i}`}
+        />
+      })}
+
     </ScrollableTabView>
     )
   }
