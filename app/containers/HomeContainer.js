@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {
   Text,
+  TouchableHighlight
 } from 'react-native';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
@@ -8,7 +9,7 @@ import Home from '../components/Home'
 import * as actions from '../actions/actions'
 import { Map } from 'immutable'
 import Archive from '../components/Archive'
-import ScrollableTabView, { DefaultTabBar, ScrollableTabBar } from 'react-native-scrollable-tab-view';
+import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
 
 
 const testActions = [
@@ -40,12 +41,14 @@ class HomeContainer extends Component {
   render(){
     return (
     <ScrollableTabView
-      style={{marginTop: 40, }}
+      style={{marginTop: 30, }}
+      initialPage={0}
       renderTabBar={() => <ScrollableTabBar />}
     >
 
-      {this.props.categories.loaded && this.props.categories.fields.map((category, i)=> {
+      {this.props.categories.fields.map((category, i)=> {
         return <Archive
+          i={i}
           key={i}
           index={i}
           categoryName={category}
