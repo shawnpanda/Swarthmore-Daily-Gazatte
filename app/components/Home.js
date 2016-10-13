@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
   StyleSheet,
   Text,
@@ -7,21 +7,19 @@ import {
 import Archive from './Archive'
 import ScrollableTabView, { DefaultTabBar, ScrollableTabBar } from 'react-native-scrollable-tab-view';
 
-
 class Home extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      tabs: [1,2,3,4,5,6]
-    }
+  componentDidMount() {
+    this.props.loadCategories()
   }
+
   render() {
     return (
     <ScrollableTabView
       style={{marginTop: 40, }}
       renderTabBar={() => <ScrollableTabBar />}
     >
-      {this.state.tabs.map((tab, i)=> {
+
+      {this.props.fields && this.props.fields.map((tab, i)=> {
         return <Archive
           key={i}
           index={i}
@@ -32,6 +30,11 @@ class Home extends Component {
     </ScrollableTabView>
     )
   }
+}
+
+Home.propTypes = {
+  fields: PropTypes.array,
+  loadCategories: PropTypes.func
 }
 
 export default Home

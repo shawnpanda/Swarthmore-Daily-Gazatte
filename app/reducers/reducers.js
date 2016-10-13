@@ -2,25 +2,26 @@ import { combineReducers } from 'redux'
 import { Record } from 'immutable'
 
 import {
-  TAXONOMIES_REQUEST,
-  TAXONOMIES_SUCCESS,
-  TAXONOMIES_FAILURE
+  CATEGORIES_REQUEST,
+  CATEGORIES_SUCCESS,
+  CATEGORIES_FAILURE
 } from '../lib/constants'
 
 const initialState = Record({
   isFetching: false,
   loaded: false,
-  fields: new (Record({}))
+  fields: []
 })
 
-function taxonomies(state = new initialState, action){
+function categories(state = new initialState, action){
   switch (action.type) {
-    case TAXONOMIES_REQUEST:
+    case CATEGORIES_REQUEST:
       return state.set('isFetching',  true)
-    case TAXONOMIES_SUCCESS:
+    case CATEGORIES_SUCCESS:
       return state.set('isFetching',  false)
                   .set('loaded', true)
-    case TAXONOMIES_FAILURE:
+                  .set('fields', action.payload)
+    case CATEGORIES_FAILURE:
       return state.set('isFetching',  false)
     default:
       return state
@@ -28,7 +29,7 @@ function taxonomies(state = new initialState, action){
 }
 
 const rootReducer = combineReducers({
-  taxonomies
+  categories
 })
 
 export default rootReducer

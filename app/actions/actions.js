@@ -1,39 +1,43 @@
 import {
-  TAXONOMIES_REQUEST,
-  TAXONOMIES_SUCCESS,
-  TAXONOMIES_FAILURE
+  REQUEST_URL,
+
+  CATEGORIES_REQUEST,
+  CATEGORIES_SUCCESS,
+  CATEGORIES_FAILURE
 } from '../lib/constants'
 
-export function loadTaxonomies() {
+export function loadCategories() {
   return dispatch => {
-    dispatch(loadTaxonomiesRequest)
-    return fetch()
+    dispatch(loadCategoriesRequest())
+    return fetch(REQUEST_URL + 'categories')
     .then((response) => response.json())
     .then((responseData)=> {
-      dispatch(loadTaxonomiesSuccess(responseData))
+      console.log(responseData)
+      var categories = responseData.map(category => category.name)
+      dispatch(loadCategoriesSuccess(categories))
     })
     .catch((error) => {
-      dispatch(loadTaxonomiesFailure(error))
+      dispatch(loadCategoriesFailure(error))
     })
   }
 }
 
-export function loadTaxonomiesRequest() {
+export function loadCategoriesRequest() {
   return {
-    type: TAXONOMIES_REQUEST
+    type: CATEGORIES_REQUEST
   }
 }
 
-export function loadTaxonomiesSuccess(responseData) {
+export function loadCategoriesSuccess(responseData) {
   return {
-    type: TAXONOMIES_FAILURE,
+    type: CATEGORIES_SUCCESS,
     payload: responseData
   }
 }
 
-export function loadTaxonomiesFailure(error) {
+export function loadCategoriesFailure(error) {
   return {
-    type: TAXONOMIES_FAILURE,
+    type: CATEGORIES_FAILURE,
     payload: error
   }
 }

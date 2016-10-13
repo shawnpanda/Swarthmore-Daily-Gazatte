@@ -7,12 +7,18 @@ import {
   TouchableHighlight
 } from 'react-native';
 import Drawer from 'react-native-drawer'
-import Home from './Home'
+import HomeContainer from '../containers/HomeContainer'
 import SideMenu from './SideMenu'
+
+const routes = [
+  {name: 'Home', index: 0, component: HomeContainer}
+]
 
 class App extends Component {
   renderScene(route, nav) {
-    return (<Home />);
+    console.log('RENDER SCENE', route);
+    const Component = route.component;
+    return (<Component route={route} navigator={nav} title='Home' {...this.props}/>);
   }
 
   render() {
@@ -31,7 +37,8 @@ class App extends Component {
       })}
         >
         <Navigator
-          initialRoute={{}}
+          initialRoute={routes[0]}
+          initialRouteStack={routes}
           renderScene={this.renderScene}
           navigationBar={
             <Navigator.NavigationBar
