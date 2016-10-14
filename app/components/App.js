@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import Drawer from 'react-native-drawer'
 import HomeContainer from '../containers/HomeContainer'
-import SideMenu from './SideMenu'
+import SideMenu from '../containers/SideMenu'
 
 const routes = [
   {name: 'Home', index: 0, component: HomeContainer}

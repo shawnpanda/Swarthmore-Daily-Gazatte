@@ -3,8 +3,11 @@ import {
   StyleSheet,
   Text,
   View,
+  ListView,
   ScrollView
 } from 'react-native';
+
+const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
 class Archive extends Component {
   render(){
