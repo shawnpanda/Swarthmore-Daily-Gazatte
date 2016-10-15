@@ -5,7 +5,6 @@ import {
 } from 'react-native';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import Home from '../components/Home'
 import * as actions from '../actions/actions'
 import { Map } from 'immutable'
 import Archive from '../components/Archive'
@@ -53,6 +52,7 @@ class HomeContainer extends Component {
           index={i}
           categoryName={category}
           tabLabel ={category}
+          loadPosts={this.props.actions.loadPosts}
         />
       })}
 

@@ -53,8 +53,8 @@ export function loadPosts() {
     .then((response) => response.json())
     .then((responseData)=> {
       console.log(responseData)
-      var posts = responseData.map(post => post.title)
-      dispatch(loadPostsSuccess(categories))
+      var posts = responseData.map(post => post.content.rendered)
+      dispatch(loadPostsSuccess(posts))
     })
     .catch((error) => {
       dispatch(loadPostsFailure(error))
